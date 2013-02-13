@@ -11,7 +11,9 @@ The following versions are detected: `ie-` `7`, `8`, `9`, `10` & `opera-` `mini`
 
 Up to 2 classes are applied to `<html>` with the syntax: `.vendor-vendor_name` and `.vendor-vendor_name-version` (optional)
 
-A JavaScript object with up to 2 properties is exposed: `layoutEngine.vendor` and `layoutEngine.version` (optional)
+A JavaScript object with up to 2 properties is exposed: `layoutEngine.vendor` and `layoutEngine.version` (optional).
+
+If combined with CssUserAgent (http://cssuseragent.org), Layout Engine will also help identify the default Android Browser, by adding a class of `ua-android-browser` to `<html>`. Why would you need this? Applying a border or background to `<select>`s make them render as text inputs. Also, AOSP Browser's radio buttons and checkboxes are very badly positioned compared to other browsers.
 
 ---
 
@@ -40,3 +42,7 @@ if (layoutEngine.vendor === 'ie' && layoutEngine.version === 10) {
 IE 8, 9 and 10's Browser and Document Modes incorrectly detect IE 7 as IE 8. Real IE 7 works as intended, however.
 
 IE 6 cannot be detected with Layout Engine. I recommend using IE Conditional Comments to target IE 6 and 7 instead.
+
+---
+
+Minified version created with UglifyJS (http://jscompress.com)
