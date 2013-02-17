@@ -13,7 +13,7 @@ Up to 2 classes are applied to `<html>` with the syntax: `.vendor-vendor_name` a
 
 A JavaScript object with up to 2 properties is exposed: `layoutEngine.vendor` and `layoutEngine.version` (optional).
 
-If combined with CssUserAgent (http://cssuseragent.org), Layout Engine will also help identify the default Android Browser, by adding a class of `ua-android-browser` to `<html>`. Why would you need this? Applying a border or background to `<select>`s make them render as text inputs. Also, AOSP Browser's radio buttons and checkboxes are very badly positioned compared to other browsers.
+If combined with CssUserAgent (http://cssuseragent.org), Layout Engine will also help identify the default Android Browser (and its WebView variants), by adding a class of `ua-android-browser` to `<html>`. Why would you need this? Applying a border or background to `<select>`s make them render as text inputs. Also, AOSP Browser's radio buttons and checkboxes are very badly positioned compared to other browsers.
 
 ---
 
