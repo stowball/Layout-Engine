@@ -1,5 +1,5 @@
 /*
-* Layout Engine v0.5.0
+* Layout Engine v0.5.1
 *
 * Adds the rendering engine name as a class on the html tag and returns a JavaScript object containing the vendor and version (where appropriate)
 *
@@ -28,8 +28,10 @@
 		// WebKit
 		if ('WebkitAppearance' in style) {
 			html.className += webkit;
-			if (cssua && cssua.ua.android && !cssua.ua.chrome)
-				html.className += ' ua-android-browser';
+			if (typeof cssua !== 'undefined') {
+				if (cssua.ua.android && !cssua.ua.chrome)
+					html.className += ' ua-android-browser';
+			}
 			
 			return {
 				vendor: webkit
