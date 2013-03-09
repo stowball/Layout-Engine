@@ -55,21 +55,21 @@
 				}
 			}
 			else if ('fill' in style) {
-				html.className += '-9'
+				html.className += '-9';
 				return {
 					vendor: ie,
 					version: 9
 				}
 			}
 			else if ('widows' in style) {
-				html.className += '-8'
+				html.className += '-8';
 				return {
 					vendor: ie,
 					version: 8
 				}
 			}
 			else {
-				html.className += '-7'
+				html.className += '-7';
 				return {
 					vendor: ie,
 					version: 7
