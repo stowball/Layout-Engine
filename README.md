@@ -10,13 +10,13 @@ The following layout engines are detected: `ie`, `khtml`, `mozilla`, `opera` & `
 
 The following versions are detected: `ie-` `7`, `8`, `9`, `10` & `opera-` `mini`
 
-The following WebKit browsers are detected: `android` *(see below)*, `chrome` *(includes Opera Blink)* & `wiiu`
+The following WebKit browsers are detected: `android`, `chrome` *(includes Opera Blink)* & `wiiu`
 
 Up to 3 classes are applied to `<html>` with the syntax: `.vendor-vendor_name`, `.vendor-vendor_name-version` *(optional)* and `.browser-browser_name` *(optional)*.
 
 A JavaScript object with up to 3 properties is exposed: `layoutEngine.vendor`, `layoutEngine.version` *(optional)* and `layoutEngine.browser` *(optional)*.
 
-If combined with CssUserAgent (http://cssuseragent.org), Layout Engine will also identify the default Android Browser (and its WebView variants), by adding a class of `browser-android` to `<html>`. Why might you need this? Applying a border or background to `<select>`s make them render as text inputs. Also, AOSP Browser's radio buttons and checkboxes are very badly positioned compared to other browsers.
+Layout Engine will also identify the default Android Browser (and its WebView variants), by adding a class of `browser-android` to `<html>`. Why might you need this? Applying a border or background to `<select>`s make them render as text inputs. Also, AOSP Browser's radio buttons and checkboxes are very badly positioned compared to other browsers.
 
 ---
 

@@ -1,5 +1,5 @@
 /*
-* Layout Engine v0.6
+* Layout Engine v0.6.1
 *
 * Adds the rendering engine and browser names as a class on the html tag and returns a JavaScript object containing the vendor, version and browser name (where appropriate)
 *
@@ -34,21 +34,19 @@
 		// WebKit
 		if ('WebkitAppearance' in style) {
 			html.className += webkit;
-			if (typeof cssua !== 'undefined') {
-				if (cssua.ua.android && !window.chrome) {
-					html.className += browser + android;
-					return {
-						vendor: webkit,
-						browser: android
-					}
-				}
-			}
-			
+
 			if (!!window.chrome) {
 				html.className += browser + chrome;
 				return {
 					vendor: webkit,
 					browser: chrome
+				}
+			}
+			else if (!window.chrome && navigator.userAgent.indexOf('Android') >= 0) {
+				html.className += browser + android;
+				return {
+					vendor: webkit,
+					browser: android
 				}
 			}
 			else if (window.wiiu) {
