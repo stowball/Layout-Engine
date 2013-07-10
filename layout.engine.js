@@ -19,7 +19,6 @@
 	var html = document.documentElement,
 		style = html.style,
 		vendor = ' vendor-',
-		chrome = 'chrome',
 		ie = 'ie',
 		khtml = 'khtml',
 		mozilla = 'mozilla',
