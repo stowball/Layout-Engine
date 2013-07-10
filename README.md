@@ -1,6 +1,8 @@
 # Layout Engine
 
-### Adds the rendering engine and browser names as a class on the html tag and returns a JavaScript object containing the vendor, version and browser name (where appropriate)
+### Browser detection done right
+
+#### Adds the rendering engine and browser names as a class on the html tag and returns a JavaScript object containing the vendor, version and browser name (where appropriate)
 
 Layout Engine uses feature detection so there can never be a false positive* and vendors cannot be spoofed. It's the **simplest and most reliable** way to target IE10.
 
@@ -15,6 +17,13 @@ Up to 3 classes are applied to `<html>` with the syntax: `.vendor-vendor_name`, 
 A JavaScript object with up to 3 properties is exposed: `layoutEngine.vendor`, `layoutEngine.version` *(optional)* and `layoutEngine.browser` *(optional)*.
 
 If combined with CssUserAgent (http://cssuseragent.org), Layout Engine will also identify the default Android Browser (and its WebView variants), by adding a class of `browser-android` to `<html>`. Why might you need this? Applying a border or background to `<select>`s make them render as text inputs. Also, AOSP Browser's radio buttons and checkboxes are very badly positioned compared to other browsers.
+
+---
+
+**Demo and Further Info:**
+
+* Test page: http://mattstow.com/experiment/layout-engine/demo.html
+* Blog post: http://mattstow.com/layout-engine.html
 
 ---
 
