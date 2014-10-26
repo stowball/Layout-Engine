@@ -32,14 +32,14 @@ Layout Engine will also identify the default Android Browser (and its WebView va
 1. Reference layout.engine.min.js in the `<head>` of your document
 
 2. In your CSS, use a vendor `class` to style elements appropriately, e.g.:
-```
+```css
 .vendor-ie-10 {
 	line-height: 20px; /* 1px more than IE 8 */
 }
 ```
 
 3. If appropriate, in your JavaScript, use `layoutEngine.vendor`, `layoutEngine.version` and `layoutEngine.browser` to run conditional functions where relevant, e.g.:
-```
+```js
 if (layoutEngine.vendor === 'ie' && layoutEngine.version === 10) {
 	// Conditional script
 }
@@ -55,4 +55,4 @@ IE 6 cannot be detected with Layout Engine. I recommend using IE Conditional Com
 
 ---
 
-Minified version created with UglifyJS (http://jscompress.com)
+Minified version created with [YUI Compressor Online](http://ganquan.info/yui/)
