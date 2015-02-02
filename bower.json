@@ -1,0 +1,26 @@
+{
+  "name": "Layout-Engine",
+  "version": "1.0.0",
+  "homepage": "https://github.com/stowball/Layout-Engine",
+  "authors": [
+    "Matt Stow <matt@mattstow.com>"
+  ],
+  "description": "Browser detection done right",
+  "main": "layout.engine.js",
+  "keywords": [
+    "browser",
+    "detection",
+    "browser",
+    "vendor",
+    "version",
+    "name"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
