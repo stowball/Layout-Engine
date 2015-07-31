@@ -1,15 +1,15 @@
 /*!
-* Layout Engine v0.8.3
+* Layout Engine v0.9.0
 *
 * Adds the rendering engine and browser names as a class on the html tag and returns a JavaScript object containing the vendor, version and browser name (where appropriate)
 *
-* Possible vendors: '.vendor-' + 'ie', 'khtml', 'mozilla', 'opera', 'webkit'
+* Possible vendors: '.vendor-' + 'edge', 'ie', 'khtml', 'mozilla', 'opera', 'webkit'
 * '.vendor-ie' also adds the version: 'vendor-' + 'ie-11', 'ie-10', 'ie-9', 'ie-8', 'ie-7'
 * '.vendor-opera-mini' is also detected
 *
 * Possible browsers: '.browser-' + 'android', 'chrome', 'wiiu'
 *
-* Copyright (c) 2014 Matt Stow
+* Copyright (c) 2015 Matt Stow
 *
 * http://mattstow.com
 *
@@ -19,6 +19,7 @@
 	var html = document.documentElement,
 		style = html.style,
 		vendor = ' vendor-',
+		edge = 'edge',
 		ie = 'ie',
 		khtml = 'khtml',
 		mozilla = 'mozilla',
@@ -31,42 +32,50 @@
 		cssClass = vendor,
 		jsObject;
 	
-	// IE
-	if ('-ms-scroll-limit' in style || 'behavior' in style) {
-		cssClass += ie + vendor + ie;
-		if ('-ms-ime-align' in style) {
-			cssClass += '-11'
+	// Edge and IE
+	if ('msScrollLimit' in style || 'behavior' in style) {
+		if ('msTextSizeAdjust' in style) {
+			cssClass += edge;
 			jsObject = {
-				vendor: ie,
-				version: 11
-			}
-		}
-		else if ('-ms-user-select' in style) {
-			cssClass += '-10'
-			jsObject = {
-				vendor: ie,
-				version: 10
-			}
-		}
-		else if ('fill' in style) {
-			cssClass += '-9';
-			jsObject = {
-				vendor: ie,
-				version: 9
-			}
-		}
-		else if ('widows' in style) {
-			cssClass += '-8';
-			jsObject = {
-				vendor: ie,
-				version: 8
+				vendor: edge
 			}
 		}
 		else {
-			cssClass += '-7';
-			jsObject = {
-				vendor: ie,
-				version: 7
+			cssClass += ie + vendor + ie;
+			if ('msImeAlign' in style) {
+				cssClass += '-11';
+				jsObject = {
+					vendor: ie,
+					version: 11
+				}
+			}
+			else if ('msUserSelect' in style) {
+				cssClass += '-10';
+				jsObject = {
+					vendor: ie,
+					version: 10
+				}
+			}
+			else if ('fill' in style) {
+				cssClass += '-9';
+				jsObject = {
+					vendor: ie,
+					version: 9
+				}
+			}
+			else if ('widows' in style) {
+				cssClass += '-8';
+				jsObject = {
+					vendor: ie,
+					version: 8
+				}
+			}
+			else {
+				cssClass += '-7';
+				jsObject = {
+					vendor: ie,
+					version: 7
+				}
 			}
 		}
 	}

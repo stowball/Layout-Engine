@@ -4,9 +4,9 @@
 
 #### Adds the rendering engine and browser names as a class on the html tag and returns a JavaScript object containing the vendor, version and browser name (where appropriate)
 
-Layout Engine uses feature detection so there can never be a false positive* and vendors cannot be spoofed. It's the **simplest and most reliable** way to target **IE10** and **IE11**.
+Layout Engine uses feature detection so there can never be a false positive* and vendors cannot be spoofed. It's the **simplest and most reliable** way to target **Edge**, **IE11** and **IE10**.
 
-The following layout engines are detected: `ie`, `khtml`, `mozilla`, `opera` & `webkit`
+The following layout engines are detected: `edge`, `ie`, `khtml`, `mozilla`, `opera` & `webkit`
 
 The following versions are detected: `ie-` `11`, `10`, `9`, `8`, `7` & `opera-` `mini`
 
