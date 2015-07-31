@@ -10,13 +10,13 @@ The following layout engines are detected: `edge`, `ie`, `khtml`, `mozilla`, `op
 
 The following versions are detected: `ie-` `11`, `10`, `9`, `8`, `7` & `opera-` `mini`
 
-The following WebKit browsers are detected: `android`, `chrome` *(includes Opera Blink)* & `wiiu`
+The following WebKit browsers are detected: `android`, `chrome` *(includes Opera Blink and Android 5+ WebView)*, `safari`, `safari-ios` & `wiiu`
 
 Up to 3 classes are applied to `<html>` with the syntax: `.vendor-vendor_name`, `.vendor-vendor_name-version` *(optional)* and `.browser-browser_name` *(optional)*.
 
 A JavaScript object with up to 3 properties is exposed: `layoutEngine.vendor`, `layoutEngine.version` *(optional)* and `layoutEngine.browser` *(optional)*.
 
-Layout Engine will also identify the default Android Browser (and its WebView variants), by adding a class of `browser-android` to `<html>`. Unfortunately, it has to use UA sniffing to do so. Anyway… why might you need to detect the Android Browser? Applying a border or background to `<select>`s make them render as text inputs. Also, AOSP Browser's radio buttons and checkboxes are very badly positioned compared to other browsers.
+Layout Engine will also identify the default Android <5 Browser (and its WebView variants), by adding a class of `browser-android` to `<html>`. Unfortunately, it has to use UA sniffing to do so. Anyway… why might you need to detect the Android Browser? Applying a border or background to `<select>`s makes them render as text inputs. Also, AOSP Browser's radio buttons and checkboxes are very badly positioned compared to other browsers.
 
 ---
 
@@ -35,6 +35,10 @@ Layout Engine will also identify the default Android Browser (and its WebView va
 ```css
 .vendor-ie-10 {
 	line-height: 20px; /* 1px more than IE 8 */
+}
+
+.browser-safari-ios .text-input {
+	font-size: 16px; /* Prevent zooming in on iOS form inputs */
 }
 ```
 

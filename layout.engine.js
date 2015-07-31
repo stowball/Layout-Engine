@@ -1,5 +1,5 @@
 /*!
-* Layout Engine v0.9.0
+* Layout Engine v0.10.0
 *
 * Adds the rendering engine and browser names as a class on the html tag and returns a JavaScript object containing the vendor, version and browser name (where appropriate)
 *
@@ -7,7 +7,7 @@
 * '.vendor-ie' also adds the version: 'vendor-' + 'ie-11', 'ie-10', 'ie-9', 'ie-8', 'ie-7'
 * '.vendor-opera-mini' is also detected
 *
-* Possible browsers: '.browser-' + 'android', 'chrome', 'wiiu'
+* Possible browsers: '.browser-' + 'android', 'chrome', 'safari', 'safari-ios', 'wiiu'
 *
 * Copyright (c) 2015 Matt Stow
 *
@@ -28,6 +28,8 @@
 		browser = ' browser-',
 		android = 'android',
 		chrome = 'chrome',
+		safari = 'safari',
+		iosSafari = safari + '-ios',
 		wiiu = 'wiiu',
 		cssClass = vendor,
 		jsObject;
@@ -38,44 +40,32 @@
 			cssClass += edge;
 			jsObject = {
 				vendor: edge
-			}
+			};
 		}
 		else {
 			cssClass += ie + vendor + ie;
+			jsObject = {
+				vendor: ie
+			};
 			if ('msImeAlign' in style) {
 				cssClass += '-11';
-				jsObject = {
-					vendor: ie,
-					version: 11
-				}
+				jsObject.version = 11;
 			}
 			else if ('msUserSelect' in style) {
 				cssClass += '-10';
-				jsObject = {
-					vendor: ie,
-					version: 10
-				}
+				jsObject.version = 10;
 			}
 			else if ('fill' in style) {
 				cssClass += '-9';
-				jsObject = {
-					vendor: ie,
-					version: 9
-				}
+				jjsObject.version = 9;
 			}
 			else if ('widows' in style) {
 				cssClass += '-8';
-				jsObject = {
-					vendor: ie,
-					version: 8
-				}
+				jsObject.version = 8;
 			}
 			else {
 				cssClass += '-7';
-				jsObject = {
-					vendor: ie,
-					version: 7
-				}
+				jsObject.version = 7;
 			}
 		}
 	}
@@ -84,31 +74,29 @@
 		cssClass += webkit;
 		var ua = navigator.userAgent;
 
-		if (ua.indexOf('Android') >= 0 && ua.indexOf('Chrome') === -1) {
-			cssClass += browser + android;
-			jsObject = {
-				vendor: webkit,
-				browser: android
-			}
-		}
-		else if (!!window.chrome || ua.indexOf('OPR') >= 0) {
+		jsObject = {
+			vendor: webkit
+		};
+		
+		if (!!window.chrome || ua.indexOf('OPR') >= 0 || ua.indexOf('wv') >= 0) {
 			cssClass += browser + chrome;
-			jsObject = {
-				vendor: webkit,
-				browser: chrome
-			}
+			jsObject.browser = chrome;
+		}
+		else if ('webkitDashboardRegion' in style) {
+			cssClass += browser + safari;
+			jsObject.browser = safari;
+		}
+		else if ('webkitOverflowScrolling' in style) {
+			cssClass += browser + iosSafari;
+			jsObject.browser = iosSafari;
+		}
+		else if (ua.indexOf('Android') >= 0) {
+			cssClass += browser + android;
+			jsObject.browser = android;
 		}
 		else if (!!window.wiiu) {
 			cssClass += browser + wiiu;
-			jsObject = {
-				vendor: webkit,
-				browser: wiiu
-			}
-		}
-		else {
-			jsObject = {
-				vendor: webkit
-			}
+			jsObject.browser = wiiu;
 		}
 	}
 	// Mozilla
@@ -121,17 +109,14 @@
 	// Opera
 	else if ('OLink' in style || !!window.opera) {
 		cssClass += opera;
+		
+		jsObject = {
+			vendor: opera,
+		};
+		
 		if ('OMiniFold' in style) {
 			cssClass += '-mini';
-			jsObject = {
-				vendor: opera,
-				version: 'mini'
-			}
-		}
-		else {
-			jsObject = {
-				vendor: opera
-			}
+			jsObject.browser = 'mini';
 		}
 	}
 	// KHTML
@@ -139,7 +124,7 @@
 		cssClass += khtml;
 		jsObject = {
 			vendor: khtml
-		}
+		};
 	}
 	else {
 		return false;
