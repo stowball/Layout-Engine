@@ -49,7 +49,7 @@
 				cssClass += '-9';
 				jsObject.version = 9;
 			}
-			else if ('widows' in style) {
+			else if ('windows' in style) {
 				cssClass += '-8';
 				jsObject.version = 8;
 			}
