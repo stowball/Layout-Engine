@@ -1,7 +1,7 @@
 /*!
-* Layout Engine v0.10.1
+* Layout Engine v0.10.2
 *
-* Copyright (c) 2015 Matt Stow
+* Copyright (c) 2016 Matt Stow
 * http://mattstow.com
 * Licensed under the MIT license
 */
@@ -23,14 +23,24 @@
 		wiiu = 'wiiu',
 		cssClass = vendor,
 		jsObject;
-	
+
 	// Edge and IE
 	if ('msScrollLimit' in style || 'behavior' in style) {
 		if ('msTextSizeAdjust' in style) {
-			cssClass += edge;
+			cssClass += edge + vendor + edge;
 			jsObject = {
 				vendor: edge
 			};
+			// Support for <meter> was introduced a little after Edge 13.
+			// @link https://developer.microsoft.com/en-us/microsoft-edge/platform/changelog/desktop/10586/?compareWith=10514
+			var meter = document.createElement('meter');
+			if (typeof meter.low === 'number') {
+				cssClass += '-13';
+				jsObject.version = 13;
+			} else {
+				cssClass += '-12';
+				jsObject.version = 12;
+			}
 		}
 		else {
 			cssClass += ie + vendor + ie;
@@ -67,7 +77,7 @@
 		jsObject = {
 			vendor: webkit
 		};
-		
+
 		if (!!window.chrome || ua.indexOf('OPR') >= 0 || ua.indexOf('wv') >= 0) {
 			cssClass += browser + chrome;
 			jsObject.browser = chrome;
@@ -99,11 +109,11 @@
 	// Opera
 	else if ('OLink' in style || !!window.opera) {
 		cssClass += opera;
-		
+
 		jsObject = {
 			vendor: opera,
 		};
-		
+
 		if ('OMiniFold' in style) {
 			cssClass += '-mini';
 			jsObject.browser = 'mini';
@@ -119,8 +129,8 @@
 	else {
 		return false;
 	}
-	
+
 	html.className += cssClass;
-	
+
 	return jsObject;
 })();
