@@ -8,7 +8,7 @@ Layout Engine uses feature detection so there can never be a false positive* and
 
 The following layout engines are detected: `edge`, `ie`, `khtml`, `mozilla`, `opera` & `webkit`
 
-The following versions are detected: `ie-` `11`, `10`, `9`, `8`, `7` & `opera-` `mini`
+The following versions are detected: `edge-` `13`, `12` & `ie-` `11`, `10`, `9`, `8`, `7` & `opera-` `mini`
 
 The following WebKit browsers are detected: `android`, `chrome` *(includes Opera Blink and Android 5+ WebView)*, `safari`, `safari-ios` & `wiiu`
 
