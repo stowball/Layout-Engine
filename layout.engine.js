@@ -1,7 +1,7 @@
 /*!
-* Layout Engine v0.10.2
+* Layout Engine v0.10.3
 *
-* Copyright (c) 2015-2016 Matt Stow
+* Copyright (c) 2015-2019 Matt Stow
 * http://mattstow.com
 * Licensed under the MIT license
 */
@@ -59,6 +59,13 @@
 			}
 		}
 	}
+    // Mozilla
+	else if ('MozAppearance' in style) {
+		cssClass += mozilla;
+		jsObject = {
+			vendor: mozilla
+		}
+	}
 	// WebKit
 	else if ('WebkitAppearance' in style) {
 		cssClass += webkit;
@@ -87,13 +94,6 @@
 		else if (!!window.wiiu) {
 			cssClass += browser + wiiu;
 			jsObject.browser = wiiu;
-		}
-	}
-	// Mozilla
-	else if ('MozAppearance' in style) {
-		cssClass += mozilla;
-		jsObject = {
-			vendor: mozilla
 		}
 	}
 	// Opera
