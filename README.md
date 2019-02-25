@@ -59,4 +59,4 @@ IE 6 cannot be detected with Layout Engine. I recommend using IE Conditional Com
 
 ---
 
-Minified version created with [YUI Compressor Online](http://ganquan.info/yui/)
+Minified version created with [Online JavaScript/CSS/HTML Compressor](http://refresh-sf.com/)
